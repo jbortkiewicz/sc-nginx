@@ -1,0 +1,16 @@
+services:
+  nginx:
+    container_name: nginx
+    environment:
+    - TZ=Europe/Warsaw
+    image: nginx:latest
+    ports:
+    - 443:443/tcp
+    - 80:80/tcp
+    restart: always
+    labels:
+    - acme-target
+    volumes:
+    - ./config:/etc/nginx:ro
+    - ./certs:/etc/certs:rw
+
